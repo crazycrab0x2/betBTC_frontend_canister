@@ -1,0 +1,30 @@
+{
+  "$schema": "https://internetcomputer.org/assets/files/dfx-json-schema-dff48b10eb79db711f4f77d6a70e6ba0.json",
+  "canisters": {
+    "betbtc-frontend": {
+      "frontend": {
+        "entrypoint": "dist/index.html"
+      },
+      "source": ["dist"],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    },
+    "staging": {
+      "providers": ["https://icp0.io"],
+      "type": "persistent"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

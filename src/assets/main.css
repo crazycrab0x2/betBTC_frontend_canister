@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.space-grotesk {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.inter {
+  font-family: 'Inter', sans-serif;
+}
+.black-button {
+  cursor: pointer;
+  box-shadow:
+    0px 1px 2px 1px #3f3f45 inset,
+    0px 0px 0px 1px #27272a;
+}
+.black-button:hover {
+  box-shadow:
+    0px -2px 2px 0px #121212 inset,
+    0px 0px 0px 1px #18181b;
+}
+.black-button:active {
+  box-shadow:
+    0px 2px 2px 1px #000000 inset,
+    0px 0px 0px 1px #27272a;
+}
+.black-button:focus {
+  box-shadow:
+    0px 2px 2px 2px #3f3f45 inset,
+    0px 0px 0px 1px #27272a,
+    0px 0px 0px 4px #fafafa33;
+}
+.oranj-button {
+  cursor: pointer;
+  box-shadow:
+    0px 2px 2px 2px #ffa66b inset,
+    0px 0px 0px 1px #ff9046;
+}
+
+.gray-button {
+  cursor: pointer;
+  box-shadow:
+    0px 2px 2px 2px #3f3f45 inset,
+    0px 0px 0px 1px #3f3f45;
+}
+
+.oranj-button:hover {
+  box-shadow:
+    0px -2px 2px 0px #e88340 inset,
+    0px 0px 0px 1px #ff9046;
+}
+
+.oranj-button:active {
+  box-shadow:
+    0px 2px 2px 1px #e88340 inset,
+    0px 0px 0px 1px #ff9046;
+}
+.oranj-button:focus {
+  box-shadow:
+    0px 2px 2px 2px #ffa66b inset,
+    0px 0px 0px 1px #ff9046,
+    0px 0px 0px 4px #ff904633;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 8px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  display: none;
+  border-radius: 10px;
+  background: #444;
+  box-shadow:
+    0 0 1px 1px #111,
+    inset 0 0 4px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  display: none;
+  border-radius: 10px;
+  box-shadow: inset 0 0 1px 1px #646464;
+}
+.glow-box {
+  box-shadow:
+    0 0 10px #ffa66b88,
+    0 0 20px #ffa66b4c,
+    0 0 30px #ffa66b33,
+    0 0 40px #ffa66b19;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.glow-box:hover {
+  box-shadow:
+    0 0 20px #ffa66b88,
+    0 0 30px #ffa66b4c,
+    0 0 40px #ffa66b33,
+    0 0 50px #ffa66b19;
+}
+
+.glow-box-second {
+  box-shadow:
+    0 0 5px #ffa66b88,
+    0 0 10px #ffa66b4c,
+    0 0 15px #ffa66b33,
+    0 0 20px #ffa66b19;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.glow-box-second:hover {
+  box-shadow:
+    0 0 5px #ffa66b88,
+    0 0 10px #ffa66b4c,
+    0 0 15px #ffa66b33,
+    0 0 20px #ffa66b19;
+}
+
+.bg-notification {
+  background-color: #27272a !important;
+}
+
+.Vue-Toastification__toast--default {
+  color: #1976d2 !important;
+}
+.Vue-Toastification__toast--info {
+  color: #2196f3 !important;
+}
+.Vue-Toastification__toast--success {
+  color: #4caf50 !important;
+}
+.Vue-Toastification__toast--error {
+  color: #ff5252 !important;
+}
+.Vue-Toastification__toast--warning {
+  color: #ffc107 !important;
+}
