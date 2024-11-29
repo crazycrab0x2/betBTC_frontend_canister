@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="rounded-xl p-2 inter bg-black">
-    <div class="min-h-[438px] min-w-[450px] bg-contain bg-no-repeat payslip-background">
+    <div class="min-h-[438px] min-w-[480px] bg-contain bg-no-repeat payslip-background">
       <navbar-logo
         imageClasses="pl-1 pr-3 py-2"
         imageUrl="/payslip-logo.svg"
@@ -9,7 +9,7 @@
         link="#"
       />
       <div class="flex flex-col divide-y-2 divide-dashed divide-[#3F3F45] px-6">
-        <div class="flex flex-col px-2 pb-8 pt-0 gap-[46px]">
+        <div class="flex flex-col px-2 pb-10 pt-0 gap-[50px]">
           <div class="flex flex-row justify-end items-center gap-3">
             <div class="flex flex-col gap-1 text-[#A1A1A9] font-[400] text-right">
               <span class="text-[12px] leading-[16px]">@{{ handle }}</span>
@@ -31,28 +31,37 @@
             </div>
             <div class="flex flex-col p-4 rounded-xl bg-[#18181B] gap-6">
               <div class="flex items-center justify-between">
-                <span class="text-[#E4E4E7] font-[400] text-[16px] leading-[22px]"> PnL* </span>
-                <div class="flex text-[#FF9046] items-center gap-1">
-                  <Icon icon="iconamoon:arrow-top-right-1-light" width="24" height="24" />
-                  <span class="font-[500] text-[36px] leading-[44px] space-grotesk">{{
-                    ((earnAmount / betAmount) * 100).toFixed(2)
-                  }}</span
-                  >%
+                <span class="text-[#E4E4E7] font-[500] text-[16px] leading-[22px]"> PnL* </span>
+                <div
+                  class="flex items-center gap-1"
+                  :class="earnAmount >= betAmount ? 'text-[#55B5A6]' : 'text-[#DD524C]'"
+                >
+                  <Icon
+                    :icon="
+                      earnAmount >= betAmount
+                        ? 'iconamoon:arrow-top-right-1-bold'
+                        : 'iconamoon:arrow-bottom-right-1-bold'
+                    "
+                    width="36"
+                    height="36"
+                  />
+                  <span class="font-[500] text-[36px] leading-[44px] space-grotesk"
+                    >{{ ((earnAmount / betAmount) * 100).toFixed(2) }}%</span
+                  >
                 </div>
               </div>
               <div class="flex flex-col gap-2">
                 <div class="flex justify-between items-center">
-                  <span class="text-[#E4E4E7] text-[16px] leading-[22px] font-[500]">USD</span>
+                  <span class="text-[#E4E4E7] text-[16px] leading-[22px] font-[500]">Returns</span>
                   <span
-                    class="space-grotesk font-[500] text-[#FF9046] text-[36px] leading-[44px] tracking-tight"
+                    class="space-grotesk font-[500] text-[#FF9046] text-[32px] leading-[40px] tracking-tight"
                   >
                     ${{ earnUSDAmount }}
                   </span>
                 </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-[#E4E4E7] text-[16px] leading-[22px] font-[500]">BTC</span>
+                <div class="flex justify-end items-center">
                   <span
-                    class="space-grotesk font-[500] text-[#FF9046] text-[36px] leading-[44px] tracking-tight"
+                    class="space-grotesk font-[500] text-[#A1A1A9] text-[16px] leading-[24px] tracking-tight"
                   >
                     {{ earnAmount }} SAT
                   </span>
@@ -75,7 +84,7 @@
           {{ DateTime.fromMillis(timestamp).toFormat('dd LLL yy, HH:mm:ss ZZZZ') }}
         </span>
       </div>
-      <div class="flex flex-row justify-between">
+      <div class="flex flex-row justify-between items-center">
         <span class="text-[#A1A1A9] text-[12px] leading-[16px] font-[400]"> Market Question </span>
         <span class="text-[#E4E4E7] text-[14px] leading-[20px] font-[500] w-[200px]">
           {{ marketTitle }}

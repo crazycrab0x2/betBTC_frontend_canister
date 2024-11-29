@@ -13,10 +13,8 @@
           class="flex flex-row inter text-[#FAFAF1] text-[16px] leading-[22px] break-words justify-between"
           v-if="!isExpand"
         >
-          <span v-if="isMultiOutcome" class="w-min">{{ option.option }}</span>
-          <span class="w-min">
-            {{ (chance * 100).toFixed(2) }}% <span v-if="!isMultiOutcome">chance</span></span
-          >
+          <span v-if="isMultiOutcome">{{ option.option }}</span>
+          <span> {{ (chance * 100).toFixed(2) }}% <span v-if="!isMultiOutcome">chance</span></span>
         </div>
         <div v-if="isExpand" class="space-grotesk flex flex-col gap-2 font-medium text-[#E4E4E7]">
           <span v-if="isMultiOutcome" class="text-[24px] leading-[32px]">{{ option.option }}</span>
@@ -120,7 +118,7 @@
                 <div
                   class="rounded-[12px] border-[1px] border-[#a1a1a95e] p-1 flex items-center justify-between gap-2 xl:h-11"
                 >
-                  <div class="flex flex-row gap-[10px]">
+                  <div class="flex flex-row gap-[10px] items-center">
                     <BtcIcon v-if="isBtc" />
                     <Icon
                       v-else
@@ -129,7 +127,7 @@
                       width="16"
                       height="16"
                     />
-                    <p class="inter font-[500] text-[#FAFAF1] text-[14px] leading-[20px] xl:w-16">
+                    <p class="inter font-[500] text-[#FAFAF1] text-[14px] xl:w-16">
                       {{
                         isBtc
                           ? Math.floor(yesPrice)
@@ -140,8 +138,11 @@
                   </div>
 
                   <div
-                    class="rounded-[8px] md:px-4 px-1 py-1 sm:px-[3px] px-[25px] inter font-[500] text-[14px] leading-[20px] text-[#FAFAFA] cursor-pointer"
-                    :class="type !== 'Yes' && isExpand ? 'bg-[#27272A]' : 'bg-[#4DA597]'"
+                    class="rounded-[8px] md:px-4 px-1 py-1 sm:px-[3px] inter font-[500] sm:text-[14px] leading-[20px] text-[#FAFAFA] cursor-pointer"
+                    :class="[
+                      type !== 'Yes' && isExpand ? 'bg-[#27272A]' : 'bg-[#4DA597]',
+                      version == MarketVersion.V1 ? 'text-[10px]' : 'px-[25px]'
+                    ]"
                     @click="() => onHandleShowBet('Yes', false)"
                   >
                     Bet
@@ -152,7 +153,7 @@
                   class="rounded-[12px] border-[1px] border-[#A1A1A95E] p-1 flex items-center justify-between gap-2"
                   v-if="version == MarketVersion.V1"
                 >
-                  <div class="flex flex-row gap-[10px]">
+                  <div class="flex flex-row gap-[10px] items-center">
                     <BtcIcon v-if="isBtc" />
                     <Icon
                       v-else
@@ -161,7 +162,7 @@
                       width="16"
                       height="16"
                     />
-                    <p class="inter font-[500] text-[#FAFAF1] text-[14px] leading-[20px]">
+                    <p class="inter font-[500] text-[#FAFAF1] text-[14px]">
                       {{
                         isBtc
                           ? Math.floor(noPrice)

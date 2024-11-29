@@ -16,7 +16,9 @@
               <template v-if="version == MarketVersion.V1">
                 <span v-if="'Yes' in types" class="capitalize text-green-600"> Bet Yes </span>
                 <span v-else-if="'No' in types" class="capitalize text-red-600"> Bet No </span>
-                <span v-else-if="'SYes' in types" class="capitalize text-green-600"> Sold Yes </span>
+                <span v-else-if="'SYes' in types" class="capitalize text-green-600">
+                  Sold Yes
+                </span>
                 <span v-else class="capitalize text-red-600"> Sold No </span>
               </template>
               <template v-else>
@@ -30,7 +32,7 @@
           </div>
           <button
             class="flex flex-row gap-1 rounded-lg border border-[#3F3F45] items-center inter font-[400] text-[12px] leading-[16px] text-[#A1A1A9] px-2 py-1"
-            @click="onClickPayslip"
+            @click.prevent="onClickPayslip"
           >
             <Icon icon="fluent:arrow-download-16-regular" width="14" height="14" />
             <span>PAYSLIP</span>
@@ -214,7 +216,7 @@
                     :timestamp="Number(timestamp)"
                     :marketTitle="marketTitle"
                     :optionTitle="optionTitle"
-                    :betOption="resolveType && Object.keys(resolveType)[0]"
+                    :betOption="Object.keys(types)[0]"
                   />
                   <div class="p-2 pt-0">
                     <div
@@ -369,7 +371,7 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
 import type { Transaction } from '../../types/notificationTypes'
-import { computed, ref, onBeforeMount } from 'vue'
+import { computed, ref } from 'vue'
 import { useMarketStore } from '@/stores/market'
 import { storeToRefs } from 'pinia'
 import { copyText } from '@/utils/text'
@@ -445,8 +447,10 @@ const shareToSocial = async (platform: string, share: Function) => {
     byteArray
   )) as string
   payslipUrl.value = baseUrl.value + uploadedKey
-  share()
-  selectedSocial.value = ''
+  setTimeout(() => {
+    share()
+    selectedSocial.value = ''
+  }, 500)
 }
 
 const convertDataUrlToUInt8Arr = (dataUrl: string): Uint8Array => {
@@ -468,6 +472,6 @@ const onClickPayslip = () => {
   isShowPayslip.value = true
   setTimeout(() => {
     payslipRef.value?.scrollIntoView({ behavior: 'smooth' })
-  }, 300)
+  }, 500)
 }
 </script>

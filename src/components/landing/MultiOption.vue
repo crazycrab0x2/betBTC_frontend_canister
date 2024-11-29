@@ -34,20 +34,19 @@
               {{ (outcome * 100).toFixed(2) }}%
             </div>
             <div
-              class="delay-100 transition-all duration-6000 ease-in-out relative flex items-center p-[1px] gap-1 rounded-full inter text-[12px] leading-[16px] text-[#E4E4E7] font-[400]"
+              class="delay-100 w-full transition-all duration-6000 ease-in-out relative flex items-center p-[1px] gap-1 rounded-full inter text-[12px] leading-[16px] text-[#E4E4E7] font-[400]"
               v-if="(!type && !isExpand) || (type === 'Yes' && isExpand)"
               :class="version == MarketVersion.V1 ? 'w-[44px]' : 'w-[120px]'"
             >
               <button
-                class="rounded-full px-2 py-1 inter font-[500] leading-[16px] text-[#FAFAFA] delay-100 transition-all duration-3000 ease-in-out shadow-[inset_0_2px_5px_rgba(255,255,255,0.4)] w-full webkit-box-limit"
-                :class="type !== 'Yes' && isExpand ? 'bg-[#27272A]' : 'bg-[#4DA597]'"
+                class="rounded-full px-2 py-1 inter leading-[16px] bg-[#FF9046] font-bold text-black delay-100 transition-all duration-3000 ease-in-out shadow-[inset_0_2px_5px_rgba(255,255,255,0.4)] webkit-box-limit w-full"
                 @click="() => onHandleShowBet('Yes', false)"
               >
                 {{ version == MarketVersion.V1 ? 'Yes' : option.option }}
               </button>
             </div>
             <div
-              class="relative flex items-center p-[1px] gap-1 rounded-full inter text-[12px] leading-[16px] text-[#E4E4E7] font-[400] w-[44px]"
+              class="relative w-full flex items-center p-[1px] gap-1 rounded-full inter text-[12px] leading-[16px] text-[#E4E4E7] font-[400]"
               v-if="
                 ((!type && !isExpand) || (type === 'No' && isExpand)) && version == MarketVersion.V1
               "
